@@ -15,7 +15,7 @@ public class LocalDateTimeSerializerConfig {
     @Value("${spring.jackson.date-format:yyyy-MM-dd HH:mm:ss}")
     private String pattern;
 
-    // 方案一
+
     @Bean
     public LocalDateTimeSerializer localDateTimeDeserializer() {
         return new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(pattern));
