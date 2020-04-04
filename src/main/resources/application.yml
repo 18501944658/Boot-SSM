@@ -3,9 +3,6 @@ server:
 
 
 
-
-
-
 mybatis:
   type-aliases-package: com.itszt.domain
   mapper-locations: classpath*:com/itszt/mapper/**/*.xml
@@ -25,6 +22,16 @@ spring:
       max-idle: 200
   jackson:
     date-format: YYYY-MM-DD hh:mm:ss
+  rabbitmq:
+    host: 192.168.0.144
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm: true
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
 logging:
   level:
     root: info

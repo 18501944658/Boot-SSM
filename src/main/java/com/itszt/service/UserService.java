@@ -11,4 +11,8 @@ public interface UserService {
     List<User> selecctAll(BaseParmerters baseParmerters);
 
     User selectByPrimaryKey(Integer id);
+
+    int insertOne(User user);
+
+    void insertMany(List<User> users);
 }

@@ -7,8 +7,26 @@
 <mapper namespace="com.itszt.repositry.UserDao">
 
 
-
     <select id="selectAll" resultType="user">
        SELECT * FROM user
    </select>
+
+
+    <insert id="insertMany" parameterType="java.util.List">
+        insert into user (
+        name,
+        age,
+        time
+
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},
+            #{item.age},
+            #{item.time}
+            )
+        </foreach>
+    </insert>
+
 </mapper>
