@@ -1,27 +1,26 @@
 package com.itszt.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-
+@ApiModel
 public class User implements Serializable {
 
 
     private static final long serialVersionUID = 2579075550395835604L;
     @Id
+    @ApiModelProperty(value = "用户id")
     private Integer id;
-
+    @ApiModelProperty(value = "用户姓名")
     private String name;
-
+    @ApiModelProperty(value = "用户年龄")
     private Integer age;
-
+    @ApiModelProperty(value = "当前时间")
     private LocalDateTime time;
 
 

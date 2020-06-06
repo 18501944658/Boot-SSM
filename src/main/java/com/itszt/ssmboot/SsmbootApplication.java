@@ -4,10 +4,11 @@ package com.itszt.ssmboot;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@SpringBootApplication(scanBasePackages = "com.itszt")
+@SpringBootApplication(scanBasePackages = "com.itszt", exclude = {DataSourceAutoConfiguration.class})
 @MapperScan(basePackages = "com.itszt.repositry")
 @EnableTransactionManagement
 @EnableRabbit

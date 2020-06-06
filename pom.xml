@@ -12,6 +12,7 @@
     <artifactId>ssmboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ssmboot</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -115,9 +116,23 @@
             <artifactId>amqp-client</artifactId>
             <version>5.0.0</version>
         </dependency>
+
+        <!--swagger2-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -141,9 +156,10 @@
                 </includes>
             </resource>
             <resource>
-                <includes>
-                    <include>src/main/resources</include>
-                </includes>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
             </resource>
         </resources>
 

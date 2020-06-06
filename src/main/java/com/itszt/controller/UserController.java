@@ -8,6 +8,8 @@ import com.itszt.domain.User;
 import com.itszt.repositry.UserDao;
 import com.itszt.service.UserService;
 import com.itszt.util.VerifyParamsUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,7 @@ import java.util.concurrent.CountDownLatch;
 
 
 @RestController
+@Api(value = "用户操作表",tags = "user表")
 public class UserController {
 
 
@@ -32,6 +35,7 @@ public class UserController {
     private RabbitTemplate rabbitTemplate;
 
     @PostMapping
+    @ApiOperation(value ="保存用户信息save",tags ="保存")
     @RequestMapping("/save")
     public String saveUser(@RequestBody User user) {
 
@@ -45,6 +49,7 @@ public class UserController {
 
 
     @GetMapping
+    @ApiOperation(value ="保存用户信息saves",tags ="保存s")
     @RequestMapping("/saves")
     public String saves() {
 
@@ -62,6 +67,7 @@ public class UserController {
 
 
     @GetMapping
+    @ApiOperation(value ="保存用户信息saveall",tags ="保存all")
     @RequestMapping("/saveall")
     public String saveList() throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -77,6 +83,7 @@ public class UserController {
 
 
     @GetMapping
+    @ApiOperation(value ="保存用户信息saveallno",tags ="保存allno")
     @RequestMapping("/saveallno")
     public String saveLists() throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -93,6 +100,7 @@ public class UserController {
 
 
     @PostMapping
+    @ApiOperation(value ="查询用户信息select",tags ="查询")
     @RequestMapping("/select")
     RestResponse<List<User>> select(@RequestBody @Validated BaseParmerters baseParmerters, BindingResult bindingResult) {
 
