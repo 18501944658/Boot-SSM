@@ -34,7 +34,7 @@ public class MQReceiver {
             }
         };
 
-        channel.basicConsume(QUEUE_NAME,consumer);
+        channel.basicConsume(QUEUE_NAME, consumer);
 
     }
 }

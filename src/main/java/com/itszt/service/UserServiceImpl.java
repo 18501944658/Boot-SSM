@@ -32,6 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void insertMany(List<User> users) {
-         userDao.insertMany(users);
+        userDao.insertMany(users);
     }
 }

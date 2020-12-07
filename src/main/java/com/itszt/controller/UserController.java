@@ -12,6 +12,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,12 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 
 @RestController
-@Api(value = "用户操作表",tags = "user表")
+@Api(value = "用户操作表", tags = "user表")
 public class UserController {
 
 
@@ -35,7 +37,7 @@ public class UserController {
     private RabbitTemplate rabbitTemplate;
 
     @PostMapping
-    @ApiOperation(value ="保存用户信息save",tags ="保存")
+    @ApiOperation(value = "保存用户信息save", tags = "保存")
     @RequestMapping("/save")
     public String saveUser(@RequestBody User user) {
 
@@ -49,7 +51,7 @@ public class UserController {
 
 
     @GetMapping
-    @ApiOperation(value ="保存用户信息saves",tags ="保存s")
+    @ApiOperation(value = "保存用户信息saves", tags = "保存s")
     @RequestMapping("/saves")
     public String saves() {
 
@@ -67,7 +69,7 @@ public class UserController {
 
 
     @GetMapping
-    @ApiOperation(value ="保存用户信息saveall",tags ="保存all")
+    @ApiOperation(value = "保存用户信息saveall", tags = "保存all")
     @RequestMapping("/saveall")
     public String saveList() throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -83,7 +85,7 @@ public class UserController {
 
 
     @GetMapping
-    @ApiOperation(value ="保存用户信息saveallno",tags ="保存allno")
+    @ApiOperation(value = "保存用户信息saveallno", tags = "保存allno")
     @RequestMapping("/saveallno")
     public String saveLists() throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -100,7 +102,7 @@ public class UserController {
 
 
     @PostMapping
-    @ApiOperation(value ="查询用户信息select",tags ="查询")
+    @ApiOperation(value = "查询用户信息select", tags = "查询")
     @RequestMapping("/select")
     RestResponse<List<User>> select(@RequestBody @Validated BaseParmerters baseParmerters, BindingResult bindingResult) {
 
@@ -121,6 +123,21 @@ public class UserController {
     User selectOne() {
 
         return userService.selectByPrimaryKey(1);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    List<User> getAll(@RequestBody @Validated BaseParmerters baseParmerters, BindingResult bindingResult) {
+        List<User> users = userService.selecctAll(baseParmerters);
+        return users;
+    }
+
+
+    @RequestMapping(value = "/addone", method = RequestMethod.GET)
+    void add() {
+        for (int i = 1000; i < 2000; i++) {
+            User build = User.builder().age(i).id(i).name("dahuang" + i).time(LocalDateTime.now()).build();
+            userService.insertOne(build);
+        }
     }
 
 

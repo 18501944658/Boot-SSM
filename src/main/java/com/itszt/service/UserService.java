@@ -15,4 +15,5 @@ public interface UserService {
     int insertOne(User user);
 
     void insertMany(List<User> users);
+
 }

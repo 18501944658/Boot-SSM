@@ -16,7 +16,7 @@ public class DirectQueueConfig {
      */
     @Bean
     public Queue DirQueue() {
-        return new Queue("QueueDirect",true);
+        return new Queue("QueueDirect", true);
     }
 
 

@@ -31,7 +31,7 @@ public class ReceiveLogs {
 
         Consumer consumer = new DefaultConsumer(channel);
 
-        channel.basicConsume(queueName,true,consumer);
+        channel.basicConsume(queueName, true, consumer);
 
         while (true) {
         }

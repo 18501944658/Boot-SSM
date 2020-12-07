@@ -23,7 +23,7 @@ public class EmitLog {
         channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 
         String message = "haha我的媳妇";
-         //我们开始从producer发布消息到exchange交换器中
+        //我们开始从producer发布消息到exchange交换器中
         channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes());
 
         System.out.println("Sender message" + message);

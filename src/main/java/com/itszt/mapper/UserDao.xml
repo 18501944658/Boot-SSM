@@ -7,9 +7,9 @@
 <mapper namespace="com.itszt.repositry.UserDao">
 
 
-    <select id="selectAll" resultType="user">
-       SELECT * FROM user
-   </select>
+    <select id="selectAll" resultType="com.itszt.domain.User">
+        SELECT * FROM user
+    </select>
 
 
     <insert id="insertMany" parameterType="java.util.List">

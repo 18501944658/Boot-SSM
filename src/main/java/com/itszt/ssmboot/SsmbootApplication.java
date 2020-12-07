@@ -17,14 +17,14 @@ import java.util.Arrays;
 public class SsmbootApplication {
 
     private static final String[] BANNER = {"||=============================||",
-                                            "||++      SSmbootApplication ++||",
-                                            "||  ++         Server      ++  ||",
-                                            "||    ++        启       ++    ||",
-                                            "||      +++++   动   +++++     ||",
-                                            "||    ++        成       ++    ||",
-                                            "||  ++          功         ++  ||",
-                                            "||++           over          ++||",
-                                            "||=============================||"};
+            "||++      SSmbootApplication ++||",
+            "||  ++         Server      ++  ||",
+            "||    ++        启       ++    ||",
+            "||      +++++   动   +++++     ||",
+            "||    ++        成       ++    ||",
+            "||  ++          功         ++  ||",
+            "||++           over          ++||",
+            "||=============================||"};
 
     public static void main(String[] args) {
         SpringApplication.run(SsmbootApplication.class, args);

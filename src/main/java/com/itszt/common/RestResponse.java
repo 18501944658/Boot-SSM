@@ -3,6 +3,8 @@ package com.itszt.common;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /*******************************************************************************
  * - Copyright (c)  2018  chinadaas.com
  * - File Name: RestResponse
@@ -16,11 +18,10 @@ import lombok.Data;
  * 2019/4/17     Zain            Create the current class
  *******************************************************************************/
 @Data
-public class RestResponse<T> {
+public class RestResponse<T> implements Serializable {
 
     private Integer code;
     private String msg;
-
 
 
     private T result;
