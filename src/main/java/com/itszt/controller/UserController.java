@@ -29,6 +29,7 @@ import java.util.concurrent.CountDownLatch;
 public class UserController {
 
 
+
     @Autowired
     private UserService userService;
 
@@ -121,7 +122,6 @@ public class UserController {
 
     @RequestMapping("/one")
     User selectOne() {
-
         return userService.selectByPrimaryKey(1);
     }
 

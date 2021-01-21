@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itszt.repositry.TagConfigDao">
+<select id="selectByTagKey" resultType="com.itszt.domain.TagConfig">
+    SELECT
+    *
+    FROM credit_tagconfig
+    where tagkey=#{tagkey}
+</select>
+
+    <update id="updateOne" parameterType="com.itszt.domain.TagConfig">
+        update credit_tagconfig
+        set
+--       id=#{one.id},
+      tagKey=#{one.tagkey},
+      tagName=#{one.tagname},
+      inModelTime=#{one.inmodeltime},
+      catagory1=#{one.catagory1},
+      catagory2=#{one.catagory2},
+      tagType=#{one.tagtype},
+      sort=#{one.sort},
+      showType=#{one.showtype},
+      createDate=#{one.createdate},
+      threshold=#{one.threshold},
+      symbol=#{one.symbol}
+where id=#{one.id}
+    </update>
+
+</mapper>
