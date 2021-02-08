@@ -17,7 +17,7 @@
        SELECT * FROM subpath  where srcName=#{entid}
    </select>
 
-
+    <!--以当前企业作为事件源-->
     <select id="selectBySrcName" resultType="com.itszt.domain.DtResultDto">
       SELECT
       sp.pathId as pathId,
@@ -26,8 +26,10 @@
       pd.fromId as fromId,
       pd.fromName as fromName,
       pd.toId as toId,
+      sp.step as step,
       pd.toName as toName,
       pd.relation_type as relationtype
-      from subpath sp left join pathdetail pd on sp.pathId=pd.pathId where sp.srcName=#{srcname} and pd.relation_type='投资'
+      from subpath sp left join pathdetail pd on sp.pathId=pd.pathId where sp.srcName=#{srcname}
+       and pd.relation_type='投资'
    </select>
 </mapper>

@@ -37,6 +37,8 @@ public class DtResultDto {
     private String fromId        ;
     @ExcelColumn(value = "传导路径",col = 5)
     private String path;
+    @ExcelColumn(value = "路径长度",col = 6)
+    private String step;
 
 
     @Override

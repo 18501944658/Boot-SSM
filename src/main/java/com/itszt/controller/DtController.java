@@ -56,8 +56,6 @@ public class DtController {
 
         List<Callable<List<DtResultDto>>> paramList = new ArrayList<>();
         List<String> entNameList = Arrays.asList(srcName.split(","));
-        /**获取成员所在集团**/
-//        List<Members> members = membersDao.selectGroupByEntName(entNameList);
         /***获取所有成员的集团**/
         List<Members> members = membersDao.selectAllMembers();
         for (int i = 0; i < entNameList.size(); i++) {
@@ -116,16 +114,33 @@ public class DtController {
                 r.setToGroupName(membersToId.getGroupName());
                 r.setToGroupId(membersToId.getGroupId());
             }
-//            r.setPath(r.getFromName() + "-投资->" + r.getToName());
         });
 
         /**去除和源企业集团不同的数据**/
-        List<DtResultDto> poiList = result.parallelStream().filter(n -> StringUtils.isNotEmpty(n.getToGroupId()) && StringUtils.isNotEmpty(n.getSrcGroupId())).filter(n -> n.getSrcGroupId().equals(n.getToGroupId())).collect(Collectors.toList());
+        List<DtResultDto> poiList = result.parallelStream()
+                .distinct()
+                .filter(n -> StringUtils.isNotEmpty(n.getToGroupId()) && StringUtils.isNotEmpty(n.getSrcGroupId()))
+                .filter(n -> n.getSrcGroupId().equals(n.getToGroupId())).collect(Collectors.toList());
         List<String> pathIdList = poiList.parallelStream().map(DtResultDto::getPathId).distinct().collect(Collectors.toList());
         List<PathDetail> pathDetails = pathDetailDao.selectPathAllByPathId(pathIdList);
         getAllPath(pathDetails, poiList);
 //        getAllPathNew(pathDetails, poiList);
-        ExcelUtils.writeExcel(request, response, poiList, DtResultDto.class, "传导结果");
+        List<DtResultDto> allpoiList = poiList.parallelStream()
+                .filter(r -> r.getPath().contains("投资")).filter(r -> !r.getPath().contains("任职"))
+                .filter(r -> {
+                    String path = r.getPath();
+                    String lastEntName = path.substring(path.lastIndexOf(">") + 1);
+                    String srcBeginName = path.substring(0, path.indexOf("-"));
+                    if (lastEntName.equals(r.getToName())&&srcBeginName.equals(r.getSrcName()))
+                        return true;
+                    return false;
+                })
+                .collect(Collectors.toList())
+                .stream().collect(
+                        Collectors.collectingAndThen(
+                                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
+
+        ExcelUtils.writeExcel(request, response, allpoiList, DtResultDto.class, "传导结果");
     }
 
     /***
@@ -185,56 +200,44 @@ public class DtController {
         if (pathDetail.getToName().equals(toEndId)) {
             path.append("-" + pathDetail.getRelationtype() + "->" + pathDetail.getToName());
         } else {
-            getToDetail(pathDetails, pathDetail.getToName(), toEndId, path, pathDetail);
+            getToDetail(pathDetails, pathDetail.getToId(), toEndId, path, pathDetail);
         }
     }
 
 
     public void getAllPathNew(List<PathDetail> pathDetails, List<DtResultDto> poiList) {
         poiList.stream().forEach(r -> {
-            List<PathDetail> result = new ArrayList<>();
             StringBuilder path = new StringBuilder();
+//            String path = new String();
             List<PathDetail> allPaths = pathDetails.parallelStream().filter(m -> m.getPathId().equals(r.getPathId())).collect(Collectors.toList());
+            log.info("当前拼接path,主体Src企业为:{},pathDetail 一共{}条", r.getSrcName(), allPaths.size());
             if (allPaths.isEmpty())
                 return;
+            /***
+             * 目标源企业
+             */
+            List<PathDetail> fromSrc = allPaths.parallelStream().filter(m -> m.getFromId().equals(r.getSrcId()) && !m.getToId().equals(r.getSrcId())).collect(Collectors.toList());
+            if (fromSrc.isEmpty())
+                return;
+            /**获取起点的节点,判断起点节点toid是否为当前遍历的r数据中的toList,是则拼接path结束,不是则将当前起点节点的to节点作为from节点,当前遍历r的to节点作为终点节点循环查**/
+            PathDetail pathDetail = fromSrc.get(0);
             path.append(r.getSrcName());
-            PathDetail pathDetailLAST = allPaths.parallelStream().filter(m -> m.getFromId().equals(r.getFromId()) && m.getToId().equals(r.getToId())).findFirst().orElse(null);
-            if (pathDetailLAST == null)
-                return;
-            result.add(pathDetailLAST);
-            List<PathDetail> collect = pathDetails.parallelStream().collect(Collectors.toList());
-            getPathStr(collect, pathDetailLAST, result);
-            if (result.isEmpty())
-                return;
-            Collections.reverse(result);
-            result.stream().forEach(m -> {
-                path.append("-" + m.getRelationtype() + "->" + m.getToName());
-            });
+            getToDetailNew(allPaths, pathDetail.getToId(), path, pathDetail);
+            r.setPath(path.toString());
+            log.info("当前为多路径拼接path：{}================================================================", path.toString());
+            log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         });
 
     }
 
-    public void getPathStr(List<PathDetail> pathDetails, PathDetail pathDetailLAST, List<PathDetail> result) {
-        if (pathDetails.isEmpty())
+    public void getToDetailNew(List<PathDetail> pathDetails, String fromId, StringBuilder path, PathDetail pathDetailnew) {
+        path.append("-" + pathDetailnew.getRelationtype() + "->" + pathDetailnew.getToName());
+        List<PathDetail> collect = pathDetails.parallelStream().filter(r -> r.getFromId().equals(fromId) && !r.getToId().equals(fromId)).collect(Collectors.toList());
+        if (collect.isEmpty())
             return;
-        PathDetail pathDetail = pathDetails.stream().filter(m -> m.getToId().equals(pathDetailLAST.getFromId())).findFirst().orElse(null);
-        if (pathDetail != null) {
-            result.add(pathDetail);
-            pathDetails.remove(pathDetail);
-            getPathStr(pathDetails, pathDetail, result);
-        }
-        return;
+        PathDetail pathDetail = collect.get(0);
+        getToDetailNew(pathDetails, pathDetail.getToId(), path, pathDetail);
     }
 
 
-    public String getPathl(List<PathDetail> allPaths, String srcId, String toId, StringBuilder path) {
-        PathDetail pathDetail = allPaths.stream().filter(r -> r.getFromId().equals(srcId)).findFirst().orElse(null);
-        if (pathDetail == null)
-            return path.toString();
-        if (pathDetail.getToId().equals(toId)) {
-            return path.append("-" + pathDetail.getRelationtype() + "->" + pathDetail.getToName()).toString();
-        }
-        allPaths.remove(pathDetail);
-        return getPathl(allPaths, pathDetail.getToId(), toId, path);
-    }
 }
