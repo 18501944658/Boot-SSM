@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itszt.repositry.PathDetailDao">
+
+
+
+    <select id="selectAllDate" resultType="com.itszt.domain.PathDetail">
+       SELECT * FROM pathdetail
+   </select>
+
+    <select id="selectByPathId" resultType="com.itszt.domain.PathDetail">
+       SELECT
+        pathId,
+        entId,
+        eventTime,
+        signalId,
+        toId,
+        fromId,
+        score,
+        relation_type as relationtype,
+        fromName,
+        toName
+         FROM pathdetail  where pathId=#{pathId} and relation_type='投资'
+   </select>
+
+
+    <select id="selectPathAllByPathId" resultType="com.itszt.domain.PathDetail">
+       SELECT
+        pathId,
+        entId,
+        eventTime,
+        signalId,
+        toId,
+        fromId,
+        score,
+        relation_type as relationtype,
+        fromName,
+        toName
+     FROM pathdetail
+       where 1=1 and
+       pathId  in
+       <foreach collection="pathIds" item="pathId" open="(" close=")" separator=",">
+           #{pathId}
+       </foreach>
+   </select>
+
+</mapper>

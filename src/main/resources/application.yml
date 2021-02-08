@@ -13,11 +13,12 @@ mybatis:
 
 spring:
   datasource:
-    username: root
-    password: 123456
+    username: dt
+    password: dt
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://192.168.200.115:3306/dt?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
     druid:
       min-idle: 5
       initial-size: 5
