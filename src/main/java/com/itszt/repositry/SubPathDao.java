@@ -20,5 +20,7 @@ public interface SubPathDao extends BaseMapper<SubPath> {
     List<SubPath> selectById(@Param("entid") String entid);
 
     List<DtResultDto> selectBySrcName(@Param("srcname") String srcname);
+    List<DtResultDto> selectByFromName(@Param("fromname") String fromname);
+    List<DtResultDto> selectByToName(@Param("toname") String toname);
 
 }

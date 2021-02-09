@@ -26,4 +26,11 @@
         </foreach>
         and status=1
    </select>
+    <select id="selectInEntname" resultType="com.itszt.domain.Insight">
+       SELECT * FROM insight where  entName in
+        <foreach collection="entnames" item="entname" open="(" separator="," close=")">
+            #{entname}
+        </foreach>
+        and status=1
+   </select>
 </mapper>

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequestMapping("/dt")
-public class DtController {
+public class DtChildeController {
 
 
     @Autowired
@@ -45,33 +45,40 @@ public class DtController {
     @Autowired
     private MembersDao membersDao;
 
-    @Autowired
-    private DtChildeController dtChildeController;
-
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 0, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(), new ThreadPoolExecutor.CallerRunsPolicy());
 
     @GetMapping
-    @RequestMapping("/select")
+    @RequestMapping("/selectone")
     void select(@RequestParam("srcName") String srcName, HttpServletResponse response, HttpServletRequest request) throws IOException, InterruptedException {
         if (StringUtils.isEmpty(srcName)) {
             return;
         }
-
         List<Callable<List<DtResultDto>>> paramList = new ArrayList<>();
         List<String> entNameList = Arrays.asList(srcName.split(","));
         /***获取所有成员的集团**/
         List<Members> members = membersDao.selectAllMembers();
+
         for (int i = 0; i < entNameList.size(); i++) {
             Integer one = i;
             Callable<List<DtResultDto>> callable = new Callable<List<DtResultDto>>() {
                 @Override
                 public List<DtResultDto> call() throws Exception {
-                    return subPathDao.selectBySrcName(entNameList.get(one).trim());
+                    return subPathDao.selectByFromName(entNameList.get(one).trim());
                 }
             };
             paramList.add(callable);
         }
-        /**根据指定企业路径查询路径详情,获取了所有的非源事件**/
+        for (int i = 0; i < entNameList.size(); i++) {
+            Integer one = i;
+            Callable<List<DtResultDto>> callable = new Callable<List<DtResultDto>>() {
+                @Override
+                public List<DtResultDto> call() throws Exception {
+                    return subPathDao.selectByToName(entNameList.get(one).trim());
+                }
+            };
+            paramList.add(callable);
+        }
+        /**根据指定企业路径查询路径详情**/
         List<Future<List<DtResultDto>>> futures = threadPoolExecutor.invokeAll(paramList);
         List<DtResultDto> result = futures.stream().flatMap(r -> {
             try {
@@ -82,42 +89,29 @@ public class DtController {
                 e.printStackTrace();
             }
             return null;
-        }).filter(Objects::nonNull).collect(Collectors.toList());
+        }).filter(r ->
+                /**过滤掉源事件的**/
+                !entNameList.contains(r.getSrcName())
+        )
+                .filter(Objects::nonNull).collect(Collectors.toList());
 
         Set<String> getSrcId = result.parallelStream().map(DtResultDto::getSrcId).distinct().collect(Collectors.toSet());
+        Set<String> getSearchName = result.parallelStream().map(DtResultDto::getSearchName).distinct().collect(Collectors.toSet());
         Set<String> getFromId = result.parallelStream().map(DtResultDto::getFromId).distinct().collect(Collectors.toSet());
         Set<String> getToId = result.parallelStream().map(DtResultDto::getToId).distinct().collect(Collectors.toSet());
         Set<String> entidlists = new HashSet<>();
         entidlists.addAll(getSrcId);
         entidlists.addAll(getFromId);
         entidlists.addAll(getToId);
-        if (result.isEmpty()) {
-            List<DtResultDto> exportDate = dtChildeController.getExportDate(srcName);
-            List<DtResultDto> allpoiList = exportDate.parallelStream()
-                    .filter(r -> r.getPath().contains("投资")).filter(r -> !r.getPath().contains("任职"))
-                    .filter(r -> {
-                        String path = r.getPath();
-                        String lastEntName = path.substring(path.lastIndexOf(">") + 1);
-                        String srcBeginName = path.substring(0, path.indexOf("-"));
-                        if (lastEntName.equals(r.getToName()) && srcBeginName.equals(r.getSrcName()))
-                            return true;
-                        return false;
-                    })
-                    .collect(Collectors.toList())
-                    .stream().collect(
-                            Collectors.collectingAndThen(
-                                    Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";" + o.getSearchName() + ";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
-
-            ExcelUtils.writeExcel(request, response, allpoiList, DtResultDto.class, "传导结果");
-            return;
-        }
         List<Insight> insights = inSightDao.selectInEntid(entidlists.stream().collect(Collectors.toList()));
+        List<Insight> insightsSearch = inSightDao.selectInEntid(getSearchName.stream().collect(Collectors.toList()));
+        insights.addAll(insightsSearch);
         result.stream().forEach(r -> {
-            Insight srcId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getSrcId())).findFirst().orElse(null);
+            Insight searchId = insights.parallelStream().filter(m -> m.getEntname().equals(r.getSearchName())).findFirst().orElse(null);
             Insight fromId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getFromId())).findFirst().orElse(null);
             Insight toId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getToId())).findFirst().orElse(null);
-            if (srcId != null)
-                r.setSrcIdScore(srcId.getTotalValue().toString());
+            if (searchId != null)
+                r.setSrcIdScore(searchId.getTotalValue().toString());
             if (fromId != null)
                 r.setFromIdScore(fromId.getTotalValue().toString());
             if (toId != null)
@@ -141,56 +135,124 @@ public class DtController {
 
         /**去除和源企业集团不同的数据**/
         List<DtResultDto> poiList = result.parallelStream()
+                .distinct()
                 .filter(n -> StringUtils.isNotEmpty(n.getToGroupId()) && StringUtils.isNotEmpty(n.getSrcGroupId()))
                 .filter(n -> n.getSrcGroupId().equals(n.getToGroupId())).collect(Collectors.toList());
         List<String> pathIdList = poiList.parallelStream().map(DtResultDto::getPathId).distinct().collect(Collectors.toList());
         List<PathDetail> pathDetails = pathDetailDao.selectPathAllByPathId(pathIdList);
         getAllPath(pathDetails, poiList);
-        List<DtResultDto> exportDate = dtChildeController.getExportDate(srcName);
-
         List<DtResultDto> allpoiList = poiList.parallelStream()
                 .filter(r -> r.getPath().contains("投资")).filter(r -> !r.getPath().contains("任职"))
-                .filter(r -> {
-                    String path = r.getPath();
-                    String lastEntName = path.substring(path.lastIndexOf(">") + 1);
-                    String srcBeginName = path.substring(0, path.indexOf("-"));
-                    if (lastEntName.equals(r.getToName()) && srcBeginName.equals(r.getSrcName()))
-                        return true;
-                    return false;
-                })
                 .collect(Collectors.toList())
                 .stream().collect(
                         Collectors.collectingAndThen(
-                                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";" + o.getSearchName() + ";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
-        allpoiList.addAll(exportDate);
-        List<DtResultDto> resultDtos = allpoiList.parallelStream()
+                                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";"+o.getSearchName()+";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
+
+        ExcelUtils.writeExcel(request, response, allpoiList, DtResultDto.class, "传导结果");
+    }
+
+    public List<DtResultDto> getExportDate(String srcName) throws InterruptedException {
+        if (StringUtils.isEmpty(srcName)) {
+            return Collections.EMPTY_LIST;
+        }
+        List<Callable<List<DtResultDto>>> paramList = new ArrayList<>();
+        List<String> entNameList = Arrays.asList(srcName.split(","));
+        /***获取所有成员的集团**/
+        List<Members> members = membersDao.selectAllMembers();
+
+        for (int i = 0; i < entNameList.size(); i++) {
+            Integer one = i;
+            Callable<List<DtResultDto>> callable = new Callable<List<DtResultDto>>() {
+                @Override
+                public List<DtResultDto> call() throws Exception {
+                    return subPathDao.selectByFromName(entNameList.get(one).trim());
+                }
+            };
+            paramList.add(callable);
+        }
+        for (int i = 0; i < entNameList.size(); i++) {
+            Integer one = i;
+            Callable<List<DtResultDto>> callable = new Callable<List<DtResultDto>>() {
+                @Override
+                public List<DtResultDto> call() throws Exception {
+                    return subPathDao.selectByToName(entNameList.get(one).trim());
+                }
+            };
+            paramList.add(callable);
+        }
+        /**根据指定企业路径查询路径详情**/
+        List<Future<List<DtResultDto>>> futures = threadPoolExecutor.invokeAll(paramList);
+        List<DtResultDto> result = futures.stream().flatMap(r -> {
+            try {
+                return r.get().stream();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }).filter(r ->
+                /**过滤掉源事件的**/
+                !entNameList.contains(r.getSrcName())
+        )
+                .filter(Objects::nonNull).collect(Collectors.toList());
+
+        Set<String> getSrcId = result.parallelStream().map(DtResultDto::getSrcId).distinct().collect(Collectors.toSet());
+        Set<String> getSearchName = result.parallelStream().map(DtResultDto::getSearchName).distinct().collect(Collectors.toSet());
+        Set<String> getFromId = result.parallelStream().map(DtResultDto::getFromId).distinct().collect(Collectors.toSet());
+        Set<String> getToId = result.parallelStream().map(DtResultDto::getToId).distinct().collect(Collectors.toSet());
+        Set<String> entidlists = new HashSet<>();
+        entidlists.addAll(getSrcId);
+        entidlists.addAll(getFromId);
+        entidlists.addAll(getToId);
+        List<Insight> insights = inSightDao.selectInEntid(entidlists.stream().collect(Collectors.toList()));
+        List<Insight> insightsSearch = inSightDao.selectInEntid(getSearchName.stream().collect(Collectors.toList()));
+        insights.addAll(insightsSearch);
+        result.stream().forEach(r -> {
+            Insight searchId = insights.parallelStream().filter(m -> m.getEntname().equals(r.getSearchName())).findFirst().orElse(null);
+            Insight fromId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getFromId())).findFirst().orElse(null);
+            Insight toId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getToId())).findFirst().orElse(null);
+            if (searchId != null)
+                r.setSrcIdScore(searchId.getTotalValue().toString());
+            if (fromId != null)
+                r.setFromIdScore(fromId.getTotalValue().toString());
+            if (toId != null)
+                r.setToIdScore(toId.getTotalValue().toString());
+            Members membersSrcId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getSrcName())).findFirst().orElse(null);
+            Members membersFromId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getFromName())).findFirst().orElse(null);
+            Members membersToId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getToName())).findFirst().orElse(null);
+            if (membersSrcId != null) {
+                r.setSrcGroupName(membersSrcId.getGroupName());
+                r.setSrcGroupId(membersSrcId.getGroupId());
+            }
+            if (membersFromId != null) {
+                r.setFromGroupName(membersFromId.getGroupName());
+                r.setFromGroupId(membersFromId.getGroupId());
+            }
+            if (membersToId != null) {
+                r.setToGroupName(membersToId.getGroupName());
+                r.setToGroupId(membersToId.getGroupId());
+            }
+        });
+
+        /**去除和源企业集团不同的数据**/
+        List<DtResultDto> poiList = result.parallelStream()
+                .distinct()
+                .filter(n -> StringUtils.isNotEmpty(n.getToGroupId()) && StringUtils.isNotEmpty(n.getSrcGroupId()))
+                .filter(n -> n.getSrcGroupId().equals(n.getToGroupId())).collect(Collectors.toList());
+        List<String> pathIdList = poiList.parallelStream().map(DtResultDto::getPathId).distinct().collect(Collectors.toList());
+        List<PathDetail> pathDetails = pathDetailDao.selectPathAllByPathId(pathIdList);
+        getAllPath(pathDetails, poiList);
+        List<DtResultDto> allpoiList = poiList.parallelStream()
                 .filter(r -> r.getPath().contains("投资")).filter(r -> !r.getPath().contains("任职"))
                 .collect(Collectors.toList())
                 .stream().collect(
                         Collectors.collectingAndThen(
-                                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";" + o.getSearchName() + ";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new))
-                .parallelStream()
-                .sorted(Comparator.comparing(DtResultDto::getSearchName).thenComparing(Comparator.comparing(DtResultDto::getPath)))
-                .collect(Collectors.toList());
+                                Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";"+o.getSearchName()+";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
 
-        /***受影响企业  分值等都一样  path留下最短的那个**/
-        Map<String, List<DtResultDto>> mapresult = resultDtos.parallelStream().collect(Collectors.groupingBy(o -> o.getSearchName() + ";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()));
-        List<DtResultDto> poi =new ArrayList<>();
-        mapresult.forEach((x, y) -> {
-            DtResultDto dtResultDto = y.parallelStream().sorted((m, n) -> {
-                        if (m.getPath().length() - n.getPath().length() > 0) {
-                            return 1;
-                        } else if (m.getPath().length() - n.getPath().length() < 0) {
-                            return -1;
-                        } else {
-                            return 0;
-                        }
-                    }
-            ).collect(Collectors.toList()).get(0);
-            poi.add(dtResultDto);
-        });
-        ExcelUtils.writeExcel(request, response, poi, DtResultDto.class, "传导结果");
+        return allpoiList;
     }
+
 
     /***
      * 获完成路径

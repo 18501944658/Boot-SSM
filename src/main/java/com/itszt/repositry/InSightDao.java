@@ -16,5 +16,6 @@ public interface InSightDao extends BaseMapper<Insight> {
     Insight selectByEntid(@Param("entid") String entid);
 
     List<Insight> selectInEntid(@Param("entids") List<String> entids);
+    List<Insight> selectInEntname(@Param("entnames") List<String> entName);
 
 }

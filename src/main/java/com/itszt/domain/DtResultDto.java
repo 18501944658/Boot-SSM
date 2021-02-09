@@ -15,7 +15,10 @@ import java.util.Objects;
 public class DtResultDto {
 
     private String toId          ;
+    /**查询企业名称*/
     @ExcelColumn(value = "客户名称",col = 1)
+    private String searchName;
+    /**事件源企业**/
     private String srcName       ;
     private String srcGroupId;
     private String srcGroupName;
@@ -62,8 +65,7 @@ public class DtResultDto {
                 fromGroupName.equals(that.fromGroupName) &&
                 pathId.equals(that.pathId) &&
                 toIdScore.equals(that.toIdScore) &&
-                fromId.equals(that.fromId) &&
-                path.equals(that.path);
+                fromId.equals(that.fromId);
     }
 
     @Override
