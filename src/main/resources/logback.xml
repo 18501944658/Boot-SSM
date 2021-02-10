@@ -28,7 +28,7 @@
 
 <logger name="com.icbc" level="${logging.level.com.icbc}"/>
 
-    <root level="INFO">
+    <root level="debug">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILELOG"/>
     </root>

@@ -28,5 +28,5 @@ spring:
     date-format: YYYY-MM-DD hh:mm:ss
 logging:
   level:
-    root: info
+    root: warn
   config: classpath:logback.xml

@@ -30,6 +30,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/dt")
 public class DtChildeController {
 
+    final static Map<String, String> socreentMap = new HashMap<>();
+
+    static {
+        socreentMap.put("庞大汽贸集团股份有限公司", "74.73");
+        socreentMap.put("辽宁方大集团实业有限公司", "55.16");
+        socreentMap.put("浙商中拓集团股份有限公司", "54.53");
+        socreentMap.put("海航集团有限公司", "64.27");
+        socreentMap.put("华夏幸福基业控股股份公司", "54.6");
+        socreentMap.put("北大方正集团有限公司", "66.55");
+    }
 
     @Autowired
     private PathDetailDao pathDetailDao;
@@ -148,7 +158,7 @@ public class DtChildeController {
                         Collectors.collectingAndThen(
                                 Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getPath() + ";"+o.getSearchName()+";" + o.getSrcName() + ";" + o.getSrcIdScore() + ";" + o.getToName() + ";" + o.getToIdScore()))), ArrayList::new));
 
-        ExcelUtils.writeExcel(request, response, allpoiList, DtResultDto.class, "传导结果");
+        ExcelUtils.writeExcel(request, response, allpoiList, DtResultDto.class, "传导结果",Collections.EMPTY_LIST);
     }
 
     public List<DtResultDto> getExportDate(String srcName) throws InterruptedException {
@@ -212,12 +222,33 @@ public class DtChildeController {
             Insight searchId = insights.parallelStream().filter(m -> m.getEntname().equals(r.getSearchName())).findFirst().orElse(null);
             Insight fromId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getFromId())).findFirst().orElse(null);
             Insight toId = insights.parallelStream().filter(m -> m.getEntid().equals(r.getToId())).findFirst().orElse(null);
-            if (searchId != null)
-                r.setSrcIdScore(searchId.getTotalValue().toString());
-            if (fromId != null)
-                r.setFromIdScore(fromId.getTotalValue().toString());
-            if (toId != null)
-                r.setToIdScore(toId.getTotalValue().toString());
+//            if (searchId != null)
+//                r.setSrcIdScore(searchId.getTotalValue().toString());
+//            if (fromId != null)
+//                r.setFromIdScore(fromId.getTotalValue().toString());
+//            if (toId != null)
+//                r.setToIdScore(toId.getTotalValue().toString());
+            if (searchId != null){
+                if (socreentMap.containsKey(r.getSearchName())) {
+                    r.setSrcIdScore(socreentMap.get(r.getSearchName()));
+                }else {
+                    r.setSrcIdScore(searchId.getTotalValue().toString());
+                }
+            }
+            if (fromId != null){
+                if (socreentMap.containsKey(r.getFromName())) {
+                    r.setSrcIdScore(socreentMap.get(r.getFromName()));
+                }else {
+                    r.setFromIdScore(fromId.getTotalValue().toString());
+                }
+            }
+            if (toId != null){
+                if (socreentMap.containsKey(r.getToName())) {
+                    r.setSrcIdScore(socreentMap.get(r.getToName()));
+                }else {
+                    r.setToIdScore(toId.getTotalValue().toString());
+                }
+            }
             Members membersSrcId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getSrcName())).findFirst().orElse(null);
             Members membersFromId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getFromName())).findFirst().orElse(null);
             Members membersToId = members.parallelStream().filter(m -> m.getMemberName().equals(r.getToName())).findFirst().orElse(null);

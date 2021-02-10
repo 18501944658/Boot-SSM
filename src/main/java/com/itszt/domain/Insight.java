@@ -53,7 +53,7 @@ public class Insight  {
 
     public Double getTotalValue() {
         BigDecimal b = new BigDecimal(totalValue);
-        return b.setScale(0, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 }
 

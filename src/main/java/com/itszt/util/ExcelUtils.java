@@ -1,10 +1,12 @@
 package com.itszt.util;
 
+import com.itszt.domain.CellLocation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.MediaType;
 
@@ -28,13 +30,7 @@ public class ExcelUtils {
     private final static String EXCEL2007 = "xlsx";
 
 
-
-
-
-
-
-
-    public static <T> void writeExcel(HttpServletRequest request, HttpServletResponse response, List<T> dataList, Class<T> cls, String fileName) {
+    public static <T> void writeExcel(HttpServletRequest request, HttpServletResponse response, List<T> dataList, Class<T> cls, String fileName, List<CellLocation> mergeDate) {
         Field[] fields = cls.getDeclaredFields();
         List<Field> fieldList = Arrays.stream(fields).filter(field -> {
             ExcelColumn annotation = field.getAnnotation(ExcelColumn.class);
@@ -74,6 +70,8 @@ public class ExcelUtils {
                 cellStyle.setFillForegroundColor(IndexedColors.WHITE.getIndex());
                 cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 cellStyle.setAlignment(HorizontalAlignment.CENTER);
+                /**设置自动换行**/
+                cellStyle.setWrapText(true);
                 Font font = wb.createFont();
                 font.setBold(true);
                 cellStyle.setFont(font);
@@ -117,6 +115,27 @@ public class ExcelUtils {
                         sheet.setColumnWidth(index, width);
                     }
                 });
+            });
+        }
+
+
+//                CellRangeAddress region = new CellRangeAddress(0,0,
+//                        0,5);
+//        sheet.addMergedRegion(region);
+//        CellRangeAddress region = new CellRangeAddress(0, // first row
+//                0, // last row
+//                0, // first column
+//                2 // last column
+//        );
+//        sheet.addMergedRegion(region);
+
+        if (!mergeDate.isEmpty()) {
+            mergeDate.stream().forEach(r -> {
+                CellRangeAddress region = new CellRangeAddress(r.getFirstRow(),
+                        r.getLastRow(),
+                        r.getFirstColumn(),
+                        r.getLastColumn());
+                sheet.addMergedRegion(region);
             });
         }
         // 冻结窗格
