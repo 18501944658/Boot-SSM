@@ -2,8 +2,7 @@ package com.itszt.stringtemplate;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +15,10 @@ import java.net.URLEncoder;
 public class ExportController {
 
 
-    @RequestMapping(value = "/xml/multi")
-    public void  exportMultiExcel(HttpServletResponse response, HttpServletRequest request) throws IOException {
+    @GetMapping(value = "/xml/multi/{filename}")
+    public void  exportMultiExcel(@PathVariable("filename") String filename, HttpServletResponse response, HttpServletRequest request) throws IOException {
         long start= System.currentTimeMillis();
-        getStr(response);
+        getStr(response,filename+".xlsx");
         System.out.println("totalTime:"+(System.currentTimeMillis()-start));
     }
 
@@ -36,12 +35,12 @@ public class ExportController {
 //        }
 //    }
 
-    public static void getStr(HttpServletResponse out) {
+    public static void getStr(HttpServletResponse out,String filename) {
         StringBuffer sb = new StringBuffer();
         try {
             out.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
             out.setCharacterEncoding("UTF-8");
-            out.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("白名单.xlsx", "utf-8"));
+            out.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "utf-8"));
             out.flushBuffer();
 //            OutputStreamWriter write = new OutputStreamWriter(new FileOutputStream(new File("C:\\Users\\Administrator\\Desktop\\aa.xls")),"UTF-8");
 //            BufferedWriter output = new BufferedWriter(write);
@@ -72,11 +71,11 @@ public class ExportController {
             sb.append("  </Style>\n");
             sb.append(" </Styles>\n");
             //行数
-            int rowNum = 10000;
+            int rowNum = 50000;
 
             int currentRecord = 0;
             //总数据量
-            int total = 300000;
+            int total = 1000000;
             //列数
             int columnNum = 10;
             //第一个工作表
