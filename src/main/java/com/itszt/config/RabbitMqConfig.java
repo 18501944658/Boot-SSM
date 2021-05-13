@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.*;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class RabbitMqConfig {
 
 

@@ -1,0 +1,451 @@
+INFO |2021-04-14  22:27:00.703|c.i.s.SsmbootApplication|Starting SsmbootApplication on lijinjiandeMacBook-Pro.local with PID 8240 (/Users/lijinjian/work/workspace/gitlab/Boot-SSM/target/classes started by lijinjian in /Users/lijinjian/work/workspace/gitlab/Boot-SSM)|
+DEBUG|2021-04-14  22:27:00.705|c.i.s.SsmbootApplication|Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.6.RELEASE|
+INFO |2021-04-14  22:27:00.706|c.i.s.SsmbootApplication|No active profile set, falling back to default profiles: default|
+WARN |2021-04-14  22:27:01.453|o.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.ssmboot]' package. Please check your configuration.|
+WARN |2021-04-14  22:27:01.605|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'jobDao' and 'com.itszt.repositry.JobDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:01.605|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'tagConfigDao' and 'com.itszt.repositry.TagConfigDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:01.605|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'userDao' and 'com.itszt.repositry.UserDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:01.605|t.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.repositry]' package. Please check your configuration.|
+INFO |2021-04-14  22:27:01.606|o.s.c.a.ConfigurationClassPostProcessor|Cannot enhance @Configuration bean definition 'mapperConfigurer' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.|
+INFO |2021-04-14  22:27:01.968|o.s.b.w.e.t.TomcatWebServer|Tomcat initialized with port(s): 8080 (http)|
+INFO |2021-04-14  22:27:01.975|o.a.c.h.Http11NioProtocol|Initializing ProtocolHandler ["http-nio-8080"]|
+INFO |2021-04-14  22:27:01.976|o.a.c.c.StandardService|Starting service [Tomcat]|
+INFO |2021-04-14  22:27:01.976|o.a.c.c.StandardEngine|Starting Servlet engine: [Apache Tomcat/9.0.33]|
+INFO |2021-04-14  22:27:02.037|o.a.c.c.C.[.[.[/]|Initializing Spring embedded WebApplicationContext|
+INFO |2021-04-14  22:27:02.037|o.s.w.c.ContextLoader|Root WebApplicationContext: initialization completed in 1281 ms|
+INFO |2021-04-14  22:27:02.127|c.a.d.s.b.a.DruidDataSourceAutoConfigure|Init DruidDataSource|
+ERROR|2021-04-14  22:27:02.203|c.a.d.p.DruidAbstractDataSource|maxIdle is deprecated|
+INFO |2021-04-14  22:27:03.199|c.a.d.p.DruidDataSource|{dataSource-1} inited|
+INFO |2021-04-14  22:27:03.743|s.d.s.w.PropertySourcedRequestMappingHandlerMapping|Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]|
+INFO |2021-04-14  22:27:03.812|o.s.s.c.ThreadPoolTaskExecutor|Initializing ExecutorService 'applicationTaskExecutor'|
+INFO |2021-04-14  22:27:03.860|o.s.b.a.w.s.WelcomePageHandlerMapping|Adding welcome page: class path resource [static/index.html]|
+INFO |2021-04-14  22:27:03.903|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.|
+INFO |2021-04-14  22:27:03.904|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.|
+INFO |2021-04-14  22:27:03.904|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.|
+INFO |2021-04-14  22:27:03.905|t.m.m.a.MapperCacheDisabler|Clear EntityHelper entityTableMap cache.|
+INFO |2021-04-14  22:27:03.972|o.q.i.StdSchedulerFactory|Using default implementation for ThreadExecutor|
+INFO |2021-04-14  22:27:03.982|o.q.c.SchedulerSignalerImpl|Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl|
+INFO |2021-04-14  22:27:03.984|o.q.c.QuartzScheduler|Quartz Scheduler v.2.2.1 created.|
+INFO |2021-04-14  22:27:03.985|o.q.s.RAMJobStore|RAMJobStore initialized.|
+INFO |2021-04-14  22:27:03.986|o.q.c.QuartzScheduler|Scheduler meta-data: Quartz Scheduler (v2.2.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+|
+INFO |2021-04-14  22:27:03.986|o.q.i.StdSchedulerFactory|Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.|
+INFO |2021-04-14  22:27:03.986|o.q.i.StdSchedulerFactory|Quartz scheduler version: 2.2.1|
+INFO |2021-04-14  22:27:03.986|o.q.c.QuartzScheduler|JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4d464510|
+INFO |2021-04-14  22:27:04.095|s.d.s.w.p.DocumentationPluginsBootstrapper|Context refreshed|
+INFO |2021-04-14  22:27:04.115|s.d.s.w.p.DocumentationPluginsBootstrapper|Found 1 custom documentation plugin(s)|
+INFO |2021-04-14  22:27:04.138|s.d.s.w.s.ApiListingReferenceScanner|Scanning for api listing references|
+INFO |2021-04-14  22:27:04.313|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [182.92.90.73:5673]|
+INFO |2021-04-14  22:27:59.062|c.i.s.SsmbootApplication|Starting SsmbootApplication on lijinjiandeMacBook-Pro.local with PID 8448 (/Users/lijinjian/work/workspace/gitlab/Boot-SSM/target/classes started by lijinjian in /Users/lijinjian/work/workspace/gitlab/Boot-SSM)|
+DEBUG|2021-04-14  22:27:59.064|c.i.s.SsmbootApplication|Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.6.RELEASE|
+INFO |2021-04-14  22:27:59.065|c.i.s.SsmbootApplication|No active profile set, falling back to default profiles: default|
+WARN |2021-04-14  22:27:59.800|o.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.ssmboot]' package. Please check your configuration.|
+WARN |2021-04-14  22:27:59.901|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'jobDao' and 'com.itszt.repositry.JobDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:59.901|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'tagConfigDao' and 'com.itszt.repositry.TagConfigDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:59.901|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'userDao' and 'com.itszt.repositry.UserDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:27:59.901|t.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.repositry]' package. Please check your configuration.|
+INFO |2021-04-14  22:27:59.901|o.s.c.a.ConfigurationClassPostProcessor|Cannot enhance @Configuration bean definition 'mapperConfigurer' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.|
+INFO |2021-04-14  22:28:00.238|o.s.b.w.e.t.TomcatWebServer|Tomcat initialized with port(s): 8080 (http)|
+INFO |2021-04-14  22:28:00.245|o.a.c.h.Http11NioProtocol|Initializing ProtocolHandler ["http-nio-8080"]|
+INFO |2021-04-14  22:28:00.246|o.a.c.c.StandardService|Starting service [Tomcat]|
+INFO |2021-04-14  22:28:00.246|o.a.c.c.StandardEngine|Starting Servlet engine: [Apache Tomcat/9.0.33]|
+INFO |2021-04-14  22:28:00.305|o.a.c.c.C.[.[.[/]|Initializing Spring embedded WebApplicationContext|
+INFO |2021-04-14  22:28:00.305|o.s.w.c.ContextLoader|Root WebApplicationContext: initialization completed in 1180 ms|
+INFO |2021-04-14  22:28:00.390|c.a.d.s.b.a.DruidDataSourceAutoConfigure|Init DruidDataSource|
+ERROR|2021-04-14  22:28:00.468|c.a.d.p.DruidAbstractDataSource|maxIdle is deprecated|
+INFO |2021-04-14  22:28:01.469|c.a.d.p.DruidDataSource|{dataSource-1} inited|
+INFO |2021-04-14  22:28:02.010|s.d.s.w.PropertySourcedRequestMappingHandlerMapping|Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]|
+INFO |2021-04-14  22:28:02.102|o.s.s.c.ThreadPoolTaskExecutor|Initializing ExecutorService 'applicationTaskExecutor'|
+INFO |2021-04-14  22:28:02.151|o.s.b.a.w.s.WelcomePageHandlerMapping|Adding welcome page: class path resource [static/index.html]|
+INFO |2021-04-14  22:28:02.184|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.|
+INFO |2021-04-14  22:28:02.184|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.|
+INFO |2021-04-14  22:28:02.185|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.|
+INFO |2021-04-14  22:28:02.185|t.m.m.a.MapperCacheDisabler|Clear EntityHelper entityTableMap cache.|
+INFO |2021-04-14  22:28:02.245|o.q.i.StdSchedulerFactory|Using default implementation for ThreadExecutor|
+INFO |2021-04-14  22:28:02.252|o.q.c.SchedulerSignalerImpl|Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl|
+INFO |2021-04-14  22:28:02.254|o.q.c.QuartzScheduler|Quartz Scheduler v.2.2.1 created.|
+INFO |2021-04-14  22:28:02.254|o.q.s.RAMJobStore|RAMJobStore initialized.|
+INFO |2021-04-14  22:28:02.255|o.q.c.QuartzScheduler|Scheduler meta-data: Quartz Scheduler (v2.2.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+|
+INFO |2021-04-14  22:28:02.255|o.q.i.StdSchedulerFactory|Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.|
+INFO |2021-04-14  22:28:02.255|o.q.i.StdSchedulerFactory|Quartz scheduler version: 2.2.1|
+INFO |2021-04-14  22:28:02.255|o.q.c.QuartzScheduler|JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5d3b6585|
+INFO |2021-04-14  22:28:02.352|s.d.s.w.p.DocumentationPluginsBootstrapper|Context refreshed|
+INFO |2021-04-14  22:28:02.366|s.d.s.w.p.DocumentationPluginsBootstrapper|Found 1 custom documentation plugin(s)|
+INFO |2021-04-14  22:28:02.389|s.d.s.w.s.ApiListingReferenceScanner|Scanning for api listing references|
+INFO |2021-04-14  22:28:02.547|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:28:02.553|o.s.a.r.l.SimpleMessageListenerContainer|Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:28:02.558|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:28:02.559|o.s.s.q.SchedulerFactoryBean|Starting Quartz Scheduler now|
+INFO |2021-04-14  22:28:02.560|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED started.|
+INFO |2021-04-14  22:28:02.566|o.a.c.h.Http11NioProtocol|Starting ProtocolHandler ["http-nio-8080"]|
+INFO |2021-04-14  22:28:02.591|o.s.b.w.e.t.TomcatWebServer|Tomcat started on port(s): 8080 (http) with context path ''|
+INFO |2021-04-14  22:28:02.594|c.i.s.SsmbootApplication|Started SsmbootApplication in 3.853 seconds (JVM running for 4.543)|
+WARN |2021-04-14  22:28:07.639|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:28:07.641|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@6ab50d1c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:28:07.643|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:28:12.709|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:28:12.710|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@5db283ac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:28:12.711|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:28:14.811|o.s.a.r.l.SimpleMessageListenerContainer|Waiting for workers to finish.|
+INFO |2021-04-14  22:28:14.811|o.s.a.r.l.SimpleMessageListenerContainer|Successfully waited for workers to finish.|
+INFO |2021-04-14  22:28:14.811|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED paused.|
+INFO |2021-04-14  22:28:14.815|o.s.s.q.SchedulerFactoryBean|Shutting down Quartz Scheduler|
+INFO |2021-04-14  22:28:14.815|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.|
+INFO |2021-04-14  22:28:14.815|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED paused.|
+INFO |2021-04-14  22:28:14.816|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.|
+INFO |2021-04-14  22:28:14.816|o.s.s.c.ThreadPoolTaskExecutor|Shutting down ExecutorService 'applicationTaskExecutor'|
+INFO |2021-04-14  22:28:14.817|o.s.a.r.l.SimpleMessageListenerContainer|Shutdown ignored - container is not active already|
+INFO |2021-04-14  22:28:14.822|c.a.d.p.DruidDataSource|{dataSource-1} closed|
+INFO |2021-04-14  22:46:16.036|c.i.s.SsmbootApplication|Starting SsmbootApplication on lijinjiandeMacBook-Pro.local with PID 11962 (/Users/lijinjian/work/workspace/gitlab/Boot-SSM/target/classes started by lijinjian in /Users/lijinjian/work/workspace/gitlab/Boot-SSM)|
+DEBUG|2021-04-14  22:46:16.039|c.i.s.SsmbootApplication|Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.6.RELEASE|
+INFO |2021-04-14  22:46:16.039|c.i.s.SsmbootApplication|No active profile set, falling back to default profiles: default|
+WARN |2021-04-14  22:46:16.846|o.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.ssmboot]' package. Please check your configuration.|
+WARN |2021-04-14  22:46:16.997|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'jobDao' and 'com.itszt.repositry.JobDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:46:16.997|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'tagConfigDao' and 'com.itszt.repositry.TagConfigDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:46:16.998|t.m.s.m.ClassPathMapperScanner|Skipping MapperFactoryBean with name 'userDao' and 'com.itszt.repositry.UserDao' mapperInterface. Bean already defined with the same name!|
+WARN |2021-04-14  22:46:16.998|t.m.s.m.ClassPathMapperScanner|No MyBatis mapper was found in '[com.itszt.repositry]' package. Please check your configuration.|
+INFO |2021-04-14  22:46:16.999|o.s.c.a.ConfigurationClassPostProcessor|Cannot enhance @Configuration bean definition 'mapperConfigurer' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.|
+INFO |2021-04-14  22:46:17.436|o.s.b.w.e.t.TomcatWebServer|Tomcat initialized with port(s): 8080 (http)|
+INFO |2021-04-14  22:46:17.443|o.a.c.h.Http11NioProtocol|Initializing ProtocolHandler ["http-nio-8080"]|
+INFO |2021-04-14  22:46:17.444|o.a.c.c.StandardService|Starting service [Tomcat]|
+INFO |2021-04-14  22:46:17.444|o.a.c.c.StandardEngine|Starting Servlet engine: [Apache Tomcat/9.0.33]|
+INFO |2021-04-14  22:46:17.514|o.a.c.c.C.[.[.[/]|Initializing Spring embedded WebApplicationContext|
+INFO |2021-04-14  22:46:17.514|o.s.w.c.ContextLoader|Root WebApplicationContext: initialization completed in 1423 ms|
+INFO |2021-04-14  22:46:17.618|c.a.d.s.b.a.DruidDataSourceAutoConfigure|Init DruidDataSource|
+ERROR|2021-04-14  22:46:17.723|c.a.d.p.DruidAbstractDataSource|maxIdle is deprecated|
+INFO |2021-04-14  22:46:18.576|c.a.d.p.DruidDataSource|{dataSource-1} inited|
+INFO |2021-04-14  22:46:19.184|s.d.s.w.PropertySourcedRequestMappingHandlerMapping|Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]|
+INFO |2021-04-14  22:46:19.268|o.s.s.c.ThreadPoolTaskExecutor|Initializing ExecutorService 'applicationTaskExecutor'|
+INFO |2021-04-14  22:46:19.339|o.s.b.a.w.s.WelcomePageHandlerMapping|Adding welcome page: class path resource [static/index.html]|
+INFO |2021-04-14  22:46:19.386|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.|
+INFO |2021-04-14  22:46:19.387|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.|
+INFO |2021-04-14  22:46:19.388|t.m.m.a.MapperCacheDisabler|Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.|
+INFO |2021-04-14  22:46:19.388|t.m.m.a.MapperCacheDisabler|Clear EntityHelper entityTableMap cache.|
+INFO |2021-04-14  22:46:19.475|o.q.i.StdSchedulerFactory|Using default implementation for ThreadExecutor|
+INFO |2021-04-14  22:46:19.486|o.q.c.SchedulerSignalerImpl|Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl|
+INFO |2021-04-14  22:46:19.487|o.q.c.QuartzScheduler|Quartz Scheduler v.2.2.1 created.|
+INFO |2021-04-14  22:46:19.488|o.q.s.RAMJobStore|RAMJobStore initialized.|
+INFO |2021-04-14  22:46:19.488|o.q.c.QuartzScheduler|Scheduler meta-data: Quartz Scheduler (v2.2.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+|
+INFO |2021-04-14  22:46:19.488|o.q.i.StdSchedulerFactory|Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.|
+INFO |2021-04-14  22:46:19.489|o.q.i.StdSchedulerFactory|Quartz scheduler version: 2.2.1|
+INFO |2021-04-14  22:46:19.489|o.q.c.QuartzScheduler|JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2d258eff|
+INFO |2021-04-14  22:46:19.608|s.d.s.w.p.DocumentationPluginsBootstrapper|Context refreshed|
+INFO |2021-04-14  22:46:19.625|s.d.s.w.p.DocumentationPluginsBootstrapper|Found 1 custom documentation plugin(s)|
+INFO |2021-04-14  22:46:19.651|s.d.s.w.s.ApiListingReferenceScanner|Scanning for api listing references|
+INFO |2021-04-14  22:46:19.814|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:46:19.818|o.s.a.r.l.SimpleMessageListenerContainer|Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:19.824|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:46:19.825|o.s.s.q.SchedulerFactoryBean|Starting Quartz Scheduler now|
+INFO |2021-04-14  22:46:19.826|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED started.|
+INFO |2021-04-14  22:46:19.832|o.a.c.h.Http11NioProtocol|Starting ProtocolHandler ["http-nio-8080"]|
+INFO |2021-04-14  22:46:19.859|o.s.b.w.e.t.TomcatWebServer|Tomcat started on port(s): 8080 (http) with context path ''|
+INFO |2021-04-14  22:46:19.863|c.i.s.SsmbootApplication|Started SsmbootApplication in 4.365 seconds (JVM running for 5.297)|
+WARN |2021-04-14  22:46:24.900|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:24.903|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7c70aae1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:24.904|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:29.992|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:29.993|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@601b9148: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:29.993|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:35.064|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:35.065|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@31d68d90: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:35.065|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:40.126|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:40.126|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3cdd5014: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:40.127|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:45.228|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:45.229|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@1c1cf58f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:45.229|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:50.297|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:50.297|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@2c44ca6e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:50.298|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:46:55.384|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:46:55.385|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@290a04da: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:46:55.387|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:00.475|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:00.476|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@6e34b8c7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:00.478|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:05.548|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:05.549|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@72dc968d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:05.550|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:10.626|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:10.627|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75e437ea: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:10.628|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:15.696|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:15.697|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@f41350c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:15.698|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:20.763|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:20.764|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@33ed1423: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:20.764|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:25.845|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:25.861|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3e4dfcda: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:25.862|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:30.938|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:30.939|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@6862f96d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:30.940|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:36.013|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:36.014|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@235d18c4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:36.015|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:41.089|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:41.090|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3da1bfd8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:41.091|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:46.162|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:46.163|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@33287268: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:46.163|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:51.245|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:51.246|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@73144373: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:51.246|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:47:56.314|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:47:56.315|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@8dfbe8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:47:56.317|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:01.394|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:01.395|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@5df0943f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:01.398|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:06.473|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:06.474|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@54af3601: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:06.476|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:11.551|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:11.552|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75c92a6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:11.554|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:16.620|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:16.620|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@62c42868: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:16.621|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:21.695|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:21.696|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@6a2bf5a6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:21.696|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:26.772|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:26.773|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@2f125959: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:26.776|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:31.847|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:31.847|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@1da5f286: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:31.848|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:36.921|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:36.922|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7165bf7f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:36.923|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:42.005|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:42.005|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@21459b2f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:42.007|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:47.087|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:47.088|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75642c22: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:47.089|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:52.156|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:52.157|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@d4ff557: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:52.159|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:48:57.253|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:48:57.254|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@220d10dd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:48:57.255|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:02.334|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:02.334|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@9568282: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:02.335|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:07.402|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:07.403|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4aa7b6fd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:07.403|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:12.482|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:12.483|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3b74fcce: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:12.484|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:17.563|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:17.564|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@529b83c3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:17.564|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:22.638|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:22.638|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@187d6a1a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:22.640|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:27.714|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:27.714|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@2a907ee2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:27.715|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:32.799|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:32.799|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@333fd45b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:32.801|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:37.870|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:37.871|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@10f49ad7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:37.872|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:42.950|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:42.950|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@11dc4394: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:42.952|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:48.035|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:48.036|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75dd6477: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:48.037|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:53.111|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:53.112|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@2e73729a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:53.113|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:49:58.186|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:49:58.187|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@46a43c31: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:49:58.188|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:03.255|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:03.256|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@24769ce6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:03.258|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:08.336|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:08.336|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4b7f68c8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:08.338|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:13.411|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:13.412|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@5fb407ec: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:13.414|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:18.498|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:18.498|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@399e1aa7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:18.500|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:23.574|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:23.575|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4e04e32c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:23.577|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:28.657|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:28.658|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@529f2e70: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:28.659|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:33.721|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:33.722|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4f91b16a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:33.722|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:38.787|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:38.788|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4f763573: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:38.788|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:43.864|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:43.865|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@32f4fcea: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:43.866|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:48.939|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:48.940|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@10b07bd4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:48.941|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:54.017|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:54.017|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4673cac4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:54.019|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:50:59.104|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:50:59.104|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@18955e13: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:50:59.106|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:04.181|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:04.181|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7705db18: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:04.183|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:09.266|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:09.267|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@33808db3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:09.269|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:14.348|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:14.349|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@5ab300d7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:14.351|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:19.424|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:19.424|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7146f4c7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:19.425|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:24.496|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:24.496|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@13256875: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:24.498|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:29.588|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:29.588|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4f042454: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:29.590|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:34.661|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:34.661|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@6dda84a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:34.663|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:39.743|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:39.743|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@384584c9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:39.745|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:44.828|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:44.828|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@63b56e17: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:44.830|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:49.914|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:49.915|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@5ff40555: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:49.916|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:51:55.009|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:51:55.009|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@1be4f843: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:51:55.011|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:00.083|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:00.084|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@13efbe6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:00.085|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:05.152|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:05.152|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@46dfa4d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:05.154|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:10.228|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:10.229|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75a8cf47: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:10.230|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:15.299|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:15.299|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7c52e3a0: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:15.301|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:20.380|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:20.380|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7ee75aaf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:20.382|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:25.467|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:25.468|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3baabfc6: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:25.469|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:30.540|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:30.541|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3150f970: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:30.542|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:35.629|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:35.629|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@457724c2: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:35.631|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:40.720|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:40.721|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7bd05b44: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:40.722|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:45.797|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:45.797|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@162edaaf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:45.798|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:50.878|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:50.879|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@4d518982: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:50.880|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:52:55.955|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:52:55.955|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@792ad48: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:52:55.956|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:01.026|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:01.027|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3e9c96c5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:01.029|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:06.114|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:06.115|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@3b84f054: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:06.115|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:11.179|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:11.180|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@14254b17: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:11.181|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:16.254|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:16.254|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@59252e59: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:16.254|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:21.314|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:21.315|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@2e88d8ea: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:21.315|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:26.381|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:26.381|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@12d7deb7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:26.382|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:31.449|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:31.449|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@675546b5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:31.450|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:36.512|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:36.512|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@390bc088: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:36.513|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:41.599|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:41.600|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@7a0e260e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:41.601|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:46.681|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:46.682|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@359a3fd5: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:46.683|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:51.765|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:51.766|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@56cdc80: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:51.767|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:53:56.852|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:53:56.853|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@68c3ec48: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:53:56.854|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:54:01.933|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:54:01.933|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@1cd3dff9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:54:01.935|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:54:07.007|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:54:07.008|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@496eca74: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:54:07.009|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+WARN |2021-04-14  22:54:12.090|o.s.a.r.l.SimpleMessageListenerContainer|Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused (Connection refused)|
+INFO |2021-04-14  22:54:12.090|o.s.a.r.l.SimpleMessageListenerContainer|Restarting Consumer@75a53272: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0|
+INFO |2021-04-14  22:54:12.091|o.s.a.r.c.CachingConnectionFactory|Attempting to connect to: [localhost:5672]|
+INFO |2021-04-14  22:54:16.493|o.s.a.r.l.SimpleMessageListenerContainer|Waiting for workers to finish.|
+INFO |2021-04-14  22:54:16.494|o.s.a.r.l.SimpleMessageListenerContainer|Successfully waited for workers to finish.|
+INFO |2021-04-14  22:54:16.494|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED paused.|
+INFO |2021-04-14  22:54:16.497|o.s.s.q.SchedulerFactoryBean|Shutting down Quartz Scheduler|
+INFO |2021-04-14  22:54:16.497|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.|
+INFO |2021-04-14  22:54:16.497|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED paused.|
+INFO |2021-04-14  22:54:16.497|o.q.c.QuartzScheduler|Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.|
+INFO |2021-04-14  22:54:16.498|o.s.s.c.ThreadPoolTaskExecutor|Shutting down ExecutorService 'applicationTaskExecutor'|
+INFO |2021-04-14  22:54:16.499|o.s.a.r.l.SimpleMessageListenerContainer|Shutdown ignored - container is not active already|
+INFO |2021-04-14  22:54:16.506|c.a.d.p.DruidDataSource|{dataSource-1} closed|
