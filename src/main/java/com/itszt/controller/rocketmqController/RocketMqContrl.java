@@ -21,7 +21,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "mq")
+@RequestMapping(value = "/mq")
 public class RocketMqContrl {
 
 

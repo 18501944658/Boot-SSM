@@ -5,6 +5,7 @@ import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
@@ -14,6 +15,7 @@ import java.util.Arrays;
 @MapperScan(basePackages = "com.itszt.repositry")
 @EnableTransactionManagement
 @EnableRabbit
+@EnableScheduling
 public class SsmbootApplication {
 
     private static final String[] BANNER = {"||=============================||",

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itszt.repositry.InSightDao">
+
+
+
+<!--    <select id="selectAll" resultType="com.itszt.domain.Insight">-->
+<!--       SELECT * FROM insight-->
+<!--   </select>-->
+
+    <select id="selectByEntid" resultType="com.itszt.domain.Insight">
+       SELECT * FROM insight where  entId=#{entid} and status=1
+       order by createDate desc
+       limit 0,1
+   </select>
+
+
+    <select id="selectInEntid" resultType="com.itszt.domain.Insight">
+       SELECT * FROM insight where  entId in
+        <foreach collection="entids" item="entid" open="(" separator="," close=")">
+            #{entid}
+        </foreach>
+        and status=1
+   </select>
+    <select id="selectInEntname" resultType="com.itszt.domain.Insight">
+       SELECT * FROM insight where  entName in
+        <foreach collection="entnames" item="entname" open="(" separator="," close=")">
+            #{entname}
+        </foreach>
+        and status=1
+   </select>
+</mapper>

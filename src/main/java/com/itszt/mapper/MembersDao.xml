@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itszt.repositry.MembersDao">
+
+    <select id="selectAllMembers" resultType="com.itszt.domain.Members">
+        select  * from  members
+    </select>
+
+    <select id="selectGroupByEntId" resultType="com.itszt.domain.Members">
+        select  * from  members where memberId in
+        <foreach collection="entidlist" item="entid" open="(" close=")" separator=",">
+            #{entid}
+        </foreach>
+    </select>
+
+
+    <select id="selectGroupByEntName" resultType="com.itszt.domain.Members">
+        select  * from  members where memberName in
+        <foreach collection="entnamelist" item="entname" open="(" close=")" separator=",">
+            #{entname}
+        </foreach>
+    </select>
+
+</mapper>

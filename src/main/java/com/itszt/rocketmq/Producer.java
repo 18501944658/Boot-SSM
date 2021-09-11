@@ -16,6 +16,10 @@ public class Producer {
         producer = new DefaultMQProducer(producerGroup);
         //不开启vip通道 开通口端口会减2
         producer.setVipChannelEnabled(false);
+
+        producer.setSendMsgTimeout(6000);
+
+
         //绑定name server
         producer.setNamesrvAddr(JmsConfig.NAME_SERVER);
         start();

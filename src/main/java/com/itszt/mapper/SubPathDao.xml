@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itszt.repositry.SubPathDao">
+
+
+
+<!--    <select id="selectAll" resultType="com.itszt.domain.SubPath">-->
+<!--       SELECT * FROM subpath-->
+<!--   </select>-->
+
+
+    <select id="selectById" resultType="com.itszt.domain.SubPath">
+       SELECT * FROM subpath  where srcName=#{entid}
+   </select>
+
+    <!--以当前企业作为事件源-->
+    <select id="selectBySrcName" resultType="com.itszt.domain.DtResultDto">
+      SELECT
+      sp.pathId as pathId,
+      sp.srcId as srcId,
+      sp.srcName as searchname,
+      sp.srcName as srcName,
+      pd.fromId as fromId,
+      pd.fromName as fromName,
+      pd.toId as toId,
+      sp.step as step,
+      pd.toName as toName,
+      pd.relation_type as relationtype
+      from subpath sp left join pathdetail pd on sp.pathId=pd.pathId where sp.srcName=#{srcname}
+       and pd.relation_type='投资'
+   </select>
+    <!--以当前企业作为受影响-->
+    <select id="selectByToName" resultType="com.itszt.domain.DtResultDto">
+      SELECT
+      sp.pathId as pathId,
+      sp.srcId as srcId,
+      sp.srcName as srcName,
+      pd.fromId as fromId,
+      pd.fromName as fromName,
+      pd.toId as toId,
+      sp.step as step,
+      pd.toName as toName,
+       pd.toName as searchName,
+      pd.relation_type as relationtype
+      from subpath sp left join pathdetail pd on sp.pathId=pd.pathId where pd.toName=#{toname}
+       and pd.relation_type='投资'
+   </select>
+    <select id="selectByFromName" resultType="com.itszt.domain.DtResultDto">
+      SELECT
+      sp.pathId as pathId,
+      sp.srcId as srcId,
+      sp.srcName as srcName,
+      pd.fromId as fromId,
+      pd.fromName as fromName,
+      pd.fromName as searchName,
+      pd.toId as toId,
+      sp.step as step,
+      pd.toName as toName,
+      pd.relation_type as relationtype
+      from subpath sp left join pathdetail pd on sp.pathId=pd.pathId where pd.fromName=#{fromname}
+       and pd.relation_type='投资'
+   </select>
+</mapper>
