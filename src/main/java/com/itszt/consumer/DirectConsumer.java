@@ -21,8 +21,8 @@ import java.util.concurrent.atomic.LongAdder;
 
 
 @Slf4j
-@Component
-@RabbitListener(queues = "QueueDirect")
+//@Component
+//@RabbitListener(queues = "QueueDirect")
 public class DirectConsumer {
 
 

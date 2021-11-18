@@ -4,23 +4,21 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.itszt.common.BaseParmerters;
 import com.itszt.common.RestResponse;
+import com.itszt.config.ApplicationContextAccessor;
 import com.itszt.domain.User;
-import com.itszt.repositry.UserDao;
+import com.itszt.domain.UserDemo;
 import com.itszt.service.UserService;
 import com.itszt.util.VerifyParamsUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 
@@ -37,11 +35,11 @@ public class UserController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+
     @PostMapping
     @ApiOperation(value = "保存用户信息save", tags = "保存")
     @RequestMapping("/save")
     public String saveUser(@RequestBody User user) {
-
 
         user.setTime(LocalDateTime.now());
 
