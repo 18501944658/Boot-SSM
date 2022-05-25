@@ -68,7 +68,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.3.4</version>
+            <version>5.3.20</version>
         </dependency>
         <!--发送邮件依赖-->
         <dependency>
